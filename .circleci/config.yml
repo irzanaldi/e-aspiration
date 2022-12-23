@@ -79,13 +79,8 @@ jobs:
           command: |
             php artisan test
 
-      - slack/notify:
-          event: fail
-          template: basic_fail_1
-
 workflows:
   version: 2
-  build:
     jobs:
       - build-laravel-9-php-81:
           context:
