@@ -4,7 +4,7 @@ version: 2.1
 # Orbs are reusable packages of CircleCI configuration that you may share across projects, enabling you to create encapsulated, parameterized commands, jobs, and executors that can be used across multiple projects.
 # See: https://circleci.com/docs/2.0/orb-intro/
 orbs:
-  node: circleci/node@4.7
+  php: circleci/php@1.1.0
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -12,10 +12,84 @@ workflows:
   sample: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - node/test:
-          # This is the node version to use for the `cimg/node` tag
-          # Relevant tags can be found on the CircleCI Developer Hub
-          # https://circleci.com/developer/images/image/cimg/node
-          version: '16.10'
-          # If you are using yarn, change the line below from "npm" to "yarn"
-          pkg-manager: npm
+  build-laravel-9-php-81:
+    docker:
+      - image: cimg/php:8.1.5
+
+      - image: circleci/mysql:8.0-ram
+        environment:
+          MYSQL_DATABASE: customerapp_test
+          MYSQL_PASSWORD: password
+          MYSQL_ROOT_PASSWORD: password
+        command: mysqld --max_connections=5000
+
+      - image: redis:6.2.1-alpine3.13
+
+    resource_class: small
+    steps:
+      - checkout
+      - run:
+          name: Wait for database service on the tcp protocol
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+
+      - run:
+          name: Wait for redis
+          command: dockerize -wait tcp://localhost:6379 -timeout 1m
+
+      - run:
+          name: Install Mysql Client for php
+          command: sudo apt update && sudo apt install -y mysql-client
+
+      - run:
+          name: Copy .env
+          command: |
+            php -r "file_exists('.env.testing') || copy('.env.ci', '.env.testing');"
+            php -r "file_exists('.env') || copy('.env.example', '.env');"
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "composer.json" }}
+            - v1-dependencies-
+
+      - run: composer install -n --prefer-dist
+
+      - save_cache:
+          key: v1-dependencies-{{ checksum "composer.json" }}
+          paths:
+            - ./vendor
+
+      - run:
+          name: Update Directory Permissions
+          command: chmod -R 777 storage bootstrap/cache
+
+      - run:
+          name: Generate key
+          command: php artisan key:generate
+
+      - run:
+          name: Clear Config
+          command: |
+            php artisan config:clear
+            php artisan route:clear
+
+      - run:
+          name: Run PINT
+          command: |
+            ./vendor/bin/pint -v --test
+
+      - run:
+          name: Executing tests (Unit and Feature tests)
+          command: |
+            php artisan test
+
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build-laravel-9-php-81:
+          context:
+            - backend-secrets
