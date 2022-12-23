@@ -78,10 +78,3 @@ jobs:
           name: Executing tests (Unit and Feature tests)
           command: |
             php artisan test
-
-workflows:
-  version: 2
-    jobs:
-      - build-laravel-9-php-81:
-          context:
-            - backend-secrets
