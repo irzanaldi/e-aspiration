@@ -20,6 +20,14 @@ class User extends Model
     protected $fillable = [
         'username',
         'password',
+        'no_telp',
+        'status',
+        'province',
+        'city',
+        'district',
+        'point',
+        'level_id',
+        'admin_id'
     ];
 
     /**
@@ -32,12 +40,13 @@ class User extends Model
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function level()
+    {
+        return $this->belongsTo(Level::class);
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class);
+    }
 }
