@@ -29,7 +29,7 @@ class AuthController extends Controller
 
         if (is_null($user) || ! Hash::check($request->password, $user->password)) {
             return redirect()->route('login')->withErrors(['message' => 'Invalid username or password']);
-        } elseif (in_array($user->status, [AdminStatus::Banned, AdminStatus::Disable])) {
+        } elseif (in_array($user->status->value, [AdminStatus::Banned, AdminStatus::Disable])) {
             return redirect()->route('login')->withErrors(['message' => 'Your Account Disable, Please Contact Admin !']);
         } elseif (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
             $request->session()->regenerate();
