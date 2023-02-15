@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Livewire\AdminPage;
+use App\Http\Livewire\NobarDetailPage;
+use App\Http\Livewire\NobarPage;
+use App\Http\Livewire\UserPage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +29,9 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
 
     Route::get('/admin', AdminPage::class)->name('admin.index');
+    Route::get('/user', UserPage::class)->name('user.index');
+    Route::get('/nobar', NobarPage::class)->name('nobar.index');
+    Route::get('/nobar/{nobar}', NobarDetailPage::class)->name('nobar.detail');
 });
 
 // Route::group(['prefix' => 'email'], function () {

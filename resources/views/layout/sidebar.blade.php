@@ -19,32 +19,24 @@
                 </a>
             </li>
             <li class="nav-item nav-category">web apps</li>
-            {{-- <li class="nav-item {{ active_class(['email/*']) }}">
-        <a class="nav-link" data-bs-toggle="collapse" href="#email" role="button" aria-expanded="{{ is_active_route(['email/*']) }}" aria-controls="email">
-          <i class="link-icon" data-feather="mail"></i>
-          <span class="link-title">Email</span>
-          <i class="link-arrow" data-feather="chevron-down"></i>
-        </a>
-        <div class="collapse {{ show_class(['email/*']) }}" id="email">
-          <ul class="nav sub-menu">
-            <li class="nav-item">
-              <a href="{{ url('/email/inbox') }}" class="nav-link {{ active_class(['email/inbox']) }}">Inbox</a>
-            </li>
-            <li class="nav-item">
-              <a href="{{ url('/email/read') }}" class="nav-link {{ active_class(['email/read']) }}">Read</a>
-            </li>
-            <li class="nav-item">
-              <a href="{{ url('/email/compose') }}" class="nav-link {{ active_class(['email/compose']) }}">Compose</a>
-            </li>
-          </ul>
-        </div>
-      </li> --}}
-      <li class="nav-item {{ Request::routeIs('admin.index') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('admin.index') }}">
-            <i class="link-icon" data-feather="user"></i><span class="link-title">Admin</span>
-        </a>
-    </li>
-            
+                <li class="nav-item {{ Request::routeIs('admin.index') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.index') }}">
+                        <i class="link-icon" data-feather="user"></i><span class="link-title">Admin</span>
+                    </a>
+                </li>
+
+                <li class="nav-item {{ Request::routeIs('user.index') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('user.index') }}">
+                        <i class="link-icon" data-feather="user"></i><span class="link-title">User</span>
+                    </a>
+                </li>
+
+                <li class="nav-item {{ Request::routeIs('nobar.index') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('nobar.index') }}">
+                        <i class="link-icon" data-feather="nobar"></i><span class="link-title">Nobar</span>
+                    </a>
+                </li>
+
             <li class="nav-item {{ active_class(['apps/calendar']) }}">
                 <a href="{{ url('/apps/calendar') }}" class="nav-link">
                     <i class="link-icon" data-feather="calendar"></i>

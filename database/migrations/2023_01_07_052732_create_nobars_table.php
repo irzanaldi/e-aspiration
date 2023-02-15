@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('gmaps_longtitude', 50);
             $table->date('date');
             $table->integer('price')->default(0);
-            $table->text('notes');
+            $table->text('description')->nullable();
             $table->time('time');
             $table->integer('id_tmdb');
             $table->foreignIdFor(Admin::class)->constrained()->cascadeOnDelete();
