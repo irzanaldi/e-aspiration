@@ -22,6 +22,7 @@ class Nobar extends Model
         'time',
         'id_tmdb',
         'admin_id',
+        'status',
     ];
 
     public function admin()

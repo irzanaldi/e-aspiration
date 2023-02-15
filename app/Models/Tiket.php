@@ -12,6 +12,7 @@ class Tiket extends Model
     public $fillable = [
         'uuid',
         'bill_id',
+        'status',
         'color',
     ];
 

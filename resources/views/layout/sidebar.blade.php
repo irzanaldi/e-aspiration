@@ -33,16 +33,21 @@
 
                 <li class="nav-item {{ Request::routeIs('nobar.index') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('nobar.index') }}">
-                        <i class="link-icon" data-feather="nobar"></i><span class="link-title">Nobar</span>
+                        <i class="link-icon" data-feather="user"></i><span class="link-title">Nobar</span>
                     </a>
                 </li>
 
-            <li class="nav-item {{ active_class(['apps/calendar']) }}">
-                <a href="{{ url('/apps/calendar') }}" class="nav-link">
-                    <i class="link-icon" data-feather="calendar"></i>
-                    <span class="link-title">Calendar</span>
-                </a>
-            </li>
+                <li class="nav-item {{ Request::routeIs('bill.index') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('bill.index') }}">
+                        <i class="link-icon" data-feather="user"></i><span class="link-title">Bill</span>
+                    </a>
+                </li>
+
+                <li class="nav-item {{ Request::routeIs('ticket.index') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('ticket.index') }}">
+                        <i class="link-icon" data-feather="user"></i><span class="link-title">Ticket</span>
+                    </a>
+                </li>
         </ul>
     </div>
 </nav>

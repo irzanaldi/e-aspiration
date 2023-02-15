@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('uuid', 20);
             $table->foreignIdFor(Bill::class)->constrained()->cascadeOnDelete();
             $table->string('color', 50);
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

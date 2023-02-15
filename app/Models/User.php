@@ -27,7 +27,7 @@ class User extends Model
         'district',
         'point',
         'level_id',
-        'admin_id'
+        'admin_id',
     ];
 
     /**
