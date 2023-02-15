@@ -75,6 +75,24 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="status" class="form-label">Is Active <span class="text-danger">*</span></label>
+                    <div class="form-check">
+                        <input wire:model="is_active" class="form-check-input" name="status" value="1" type="radio"
+                        id="status_true">
+                        <label class="form-check-label" for="status_true">
+                            True
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input wire:model="status" class="form-check-input" name="status" value="0" type="radio"
+                        id="status_false">
+                        <label class="form-check-label" for="status_false">
+                            False
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label for="time" class="form-label">Time <span class="text-danger">*</span></label>
                     <input type="time" name="time" id="time" class="form-control invalid-label"
                         wire:model="time" maxlength="255">
@@ -108,6 +126,7 @@
                         <th>City</th>
                         <th>Location</th>
                         <th>Date</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
@@ -119,6 +138,7 @@
                                 <td>{{ $nobar->city }}</td>
                                 <td>{{ $nobar->location }}</td>
                                 <td>{{ $nobar->date }}</td>
+                                <td class="text-{{ $nobar->status == false ? 'danger' : 'success' }}">{{ $nobar->status == false ? 'Deactive' : 'Active'}}</td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <button class="btn btn-sm btn-warning" wire:click="edit({{ $nobar }})">Edit</button>

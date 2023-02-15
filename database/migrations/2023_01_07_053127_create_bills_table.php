@@ -19,6 +19,7 @@ return new class extends Migration
             $table->id();
             $table->string('uuid', 20);
             $table->string('code', 50);
+            $table->boolean('status')->default(true);
             $table->foreignIdFor(Nobar::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->timestamps();

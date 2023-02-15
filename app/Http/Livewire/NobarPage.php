@@ -3,9 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Models\Nobar;
+use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Illuminate\Support\Str;
 
 class NobarPage extends Component
 {
@@ -151,7 +151,7 @@ class NobarPage extends Component
 
     public function toggleForm()
     {
-        $this->formMode = !$this->formMode;
+        $this->formMode = ! $this->formMode;
         $this->nobar = null;
         $this->name = null;
         $this->city = null;
@@ -167,7 +167,7 @@ class NobarPage extends Component
 
     public function getNobar()
     {
-        $user = Nobar::when($this->search, fn ($query) => $query->where('name', 'LIKE', '%' . $this->search . '%'))
+        $user = Nobar::when($this->search, fn ($query) => $query->where('name', 'LIKE', '%'.$this->search.'%'))
             ->orderByDesc('id')
             ->paginate(15);
 

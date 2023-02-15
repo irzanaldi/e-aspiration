@@ -17,9 +17,9 @@ class NobarDetailPage extends Component
     public function render()
     {
         return view('livewire.nobar-detail-page',
-        [
-            'nobar' => $this->nobar,
-        ],
-    )->extends('layout.master')->section('content');
+            [
+                'nobar' => $this->nobar,
+            ],
+        )->extends('layout.master')->section('content');
     }
 }

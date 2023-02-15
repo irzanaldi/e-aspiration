@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('gmaps_latitude', 50);
             $table->string('gmaps_longtitude', 50);
             $table->date('date');
+            $table->boolean('status')->default(true);
             $table->integer('price')->default(0);
             $table->text('description')->nullable();
             $table->time('time');

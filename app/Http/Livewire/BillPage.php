@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\User;
+use App\Models\Bill;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class UserPage extends Component
+class BillPage extends Component
 {
     use WithPagination;
 
@@ -26,21 +26,20 @@ class UserPage extends Component
         $this->resetPage();
     }
 
-    public function getUser()
+    public function getBill()
     {
-        $user = User::when($this->search, fn ($query) => $query->where('product_name', 'LIKE', '%'.$this->search.'%')
-        ->orWhere('no_telp', 'LIKE', '%'.$this->search.'%'))
+        $bill = Bill::when($this->search, fn ($query) => $query->whereRelation('nobar', 'name', 'LIKE', '%'.$this->search.'%'))
         ->orderByDesc('id')
         ->paginate(15);
 
-        return $user;
+        return $bill;
     }
 
     public function render()
     {
-        return view('livewire.user-page',
+        return view('livewire.bill-page',
             [
-                'users' => $this->getUser(),
+                'bills' => $this->getBill(),
             ],
         )->extends('layout.master')->section('content');
     }

@@ -4,9 +4,9 @@ namespace App\Http\Livewire;
 
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Illuminate\Support\Str;
 
 class AdminPage extends Component
 {
@@ -119,7 +119,7 @@ class AdminPage extends Component
 
     public function toggleForm()
     {
-        $this->formMode = !$this->formMode;
+        $this->formMode = ! $this->formMode;
         $this->password = null;
         $this->rePassword = null;
         $this->username = '';
@@ -136,9 +136,9 @@ class AdminPage extends Component
     public function render()
     {
         return view('livewire.admin-page',
-        [
-            'admins' => $this->getAdmin(),
-        ],
+            [
+                'admins' => $this->getAdmin(),
+            ],
         )->extends('layout.master')->section('content');
     }
 }

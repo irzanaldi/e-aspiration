@@ -11,6 +11,7 @@ class Bill extends Model
 
     public $fillable = [
         'uuid',
+        'status',
         'code',
         'nobar_id',
         'user_id',

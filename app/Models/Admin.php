@@ -23,7 +23,7 @@ class Admin extends Authenticatable
 
     public $casts = [
         'level' => AdminLevel::class,
-        'status' => AdminStatus::class
+        'status' => AdminStatus::class,
     ];
 
     protected $hidden = [
