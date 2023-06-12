@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Bill;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tikets', function (Blueprint $table) {
+        Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->string('uuid', 20);
-            $table->foreignIdFor(Bill::class)->constrained()->cascadeOnDelete();
-            $table->string('color', 50);
-            $table->boolean('status')->default(true);
+            $table->string('alamat');
+            $table->tinyInteger('rt');
+            $table->tinyInteger('rw');
+            $table->string('kelurahan');
+            $table->string('kecamatan');
+            $table->string('provinsi');
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tikets');
+        Schema::dropIfExists('locations');
     }
 };

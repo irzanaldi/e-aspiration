@@ -19,35 +19,25 @@
                 </a>
             </li>
             <li class="nav-item nav-category">web apps</li>
+
                 <li class="nav-item {{ Request::routeIs('admin.index') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ route('admin.index') }}">
                         <i class="link-icon" data-feather="user"></i><span class="link-title">Admin</span>
                     </a>
                 </li>
 
-                <li class="nav-item {{ Request::routeIs('user.index') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('user.index') }}">
-                        <i class="link-icon" data-feather="user"></i><span class="link-title">User</span>
+                <li class="nav-item {{ Request::routeIs('location.index') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('location.index') }}">
+                        <i class="link-icon" data-feather="user"></i><span class="link-title">Location</span>
                     </a>
                 </li>
 
-                <li class="nav-item {{ Request::routeIs('nobar.index') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('nobar.index') }}">
-                        <i class="link-icon" data-feather="user"></i><span class="link-title">Nobar</span>
+                <li class="nav-item {{ Request::routeIs('quick-count.index') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('quick-count.index') }}">
+                        <i class="link-icon" data-feather="user"></i><span class="link-title">Quick Count</span>
                     </a>
                 </li>
 
-                <li class="nav-item {{ Request::routeIs('bill.index') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('bill.index') }}">
-                        <i class="link-icon" data-feather="user"></i><span class="link-title">Bill</span>
-                    </a>
-                </li>
-
-                <li class="nav-item {{ Request::routeIs('ticket.index') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ route('ticket.index') }}">
-                        <i class="link-icon" data-feather="user"></i><span class="link-title">Ticket</span>
-                    </a>
-                </li>
         </ul>
     </div>
 </nav>

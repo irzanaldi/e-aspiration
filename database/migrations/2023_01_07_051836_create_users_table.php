@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Admin;
-use App\Models\Level;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -25,7 +24,6 @@ return new class extends Migration
             $table->string('city');
             $table->string('district');
             $table->integer('point')->default(0);
-            $table->foreignIdFor(Level::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Admin::class)->nullable()->constrained()->cascadeOnDelete();
             $table->rememberToken();
             $table->timestamps();

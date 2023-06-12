@@ -2,12 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Livewire\AdminPage;
-use App\Http\Livewire\BillPage;
-use App\Http\Livewire\EventDetailPage;
 use App\Http\Livewire\LandingPage;
-use App\Http\Livewire\NobarDetailPage;
-use App\Http\Livewire\NobarPage;
-use App\Http\Livewire\TicketPage;
+use App\Http\Livewire\LocationPage;
+use App\Http\Livewire\QuickCountPage;
 use App\Http\Livewire\UserPage;
 use Illuminate\Support\Facades\Route;
 
@@ -35,14 +32,12 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/admin', AdminPage::class)->name('admin.index');
     Route::get('/user', UserPage::class)->name('user.index');
-    Route::get('/nobar', NobarPage::class)->name('nobar.index');
-    Route::get('/tiket', TicketPage::class)->name('ticket.index');
-    Route::get('/bill', BillPage::class)->name('bill.index');
-    Route::get('/nobar/{nobar}', NobarDetailPage::class)->name('nobar.detail');
+    Route::get('/location', LocationPage::class)->name('location.index');
+    Route::get('/quick-count', QuickCountPage::class)->name('quick-count.index');
 });
 
 // Route::middleware('auth.user')->group(function () {
-    Route::get('/event', EventDetailPage::class)->name('event.index');
+// Route::get('/event', EventDetailPage::class)->name('event.index');
 // });
 
 // Route::group(['prefix' => 'email'], function () {

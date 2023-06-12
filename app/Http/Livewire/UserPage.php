@@ -29,9 +29,9 @@ class UserPage extends Component
     public function getUser()
     {
         $user = User::when($this->search, fn ($query) => $query->where('product_name', 'LIKE', '%'.$this->search.'%')
-        ->orWhere('no_telp', 'LIKE', '%'.$this->search.'%'))
-        ->orderByDesc('id')
-        ->paginate(15);
+            ->orWhere('no_telp', 'LIKE', '%'.$this->search.'%'))
+            ->orderByDesc('id')
+            ->paginate(15);
 
         return $user;
     }
