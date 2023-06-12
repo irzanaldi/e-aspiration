@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Livewire\AdminPage;
 use App\Http\Livewire\BillPage;
+use App\Http\Livewire\EventDetailPage;
+use App\Http\Livewire\LandingPage;
 use App\Http\Livewire\NobarDetailPage;
 use App\Http\Livewire\NobarPage;
 use App\Http\Livewire\TicketPage;
@@ -21,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::get('/home', function () { return view('dashboard'); })->name('home');
+Route::get('/home', LandingPage::class)->name('home');
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login-post', [AuthController::class, 'loginPost'])->name('login.post');
 Route::post('/logout-admin', [AuthController::class, 'logout'])->name('logout.admin');
@@ -37,6 +40,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/bill', BillPage::class)->name('bill.index');
     Route::get('/nobar/{nobar}', NobarDetailPage::class)->name('nobar.detail');
 });
+
+// Route::middleware('auth.user')->group(function () {
+    Route::get('/event', EventDetailPage::class)->name('event.index');
+// });
 
 // Route::group(['prefix' => 'email'], function () {
 //     Route::get('inbox', function () {
