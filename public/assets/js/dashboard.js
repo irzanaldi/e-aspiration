@@ -180,7 +180,7 @@ $(function() {
     "Apr 01 2022", "Apr 02 2022", "Apr 03 2022", "Apr 04 2022", "Apr 05 2022", "Apr 06 2022", "Apr 07 2022", "Apr 08 2022", "Apr 09 2022", "Apr 10 2022", "Apr 11 2022", "Apr 12 2022", "Apr 13 2022", "Apr 14 2022", "Apr 15 2022", "Apr 16 2022", "Apr 17 2022", "Apr 18 2022", "Apr 19 2022", "Apr 20 2022","Apr 21 2022", "Apr 22 2022", "Apr 23 2022", "Apr 24 2022", "Apr 25 2022", "Apr 26 2022", "Apr 27 2022", "Apr 28 2022", "Apr 29 2022", "Apr 30 2022",
     "May 01 2022", "May 02 2022", "May 03 2022", "May 04 2022", "May 05 2022", "May 06 2022", "May 07 2022", "May 08 2022", "May 09 2022", "May 10 2022", "May 11 2022", "May 12 2022", "May 13 2022", "May 14 2022", "May 15 2022", "May 16 2022", "May 17 2022", "May 18 2022", "May 19 2022", "May 20 2022","May 21 2022", "May 22 2022", "May 23 2022", "May 24 2022", "May 25 2022", "May 26 2022", "May 27 2022", "May 28 2022", "May 29 2022", "May 30 2022",
   ]
-  
+
 
 
 
@@ -509,10 +509,10 @@ $(function() {
       tooltip: {
         theme: 'light'
       },
-      colors: [colors.primary],  
+      colors: [colors.primary],
       fill: {
         opacity: .9
-      } , 
+      } ,
       grid: {
         padding: {
           bottom: -4
@@ -526,11 +526,11 @@ $(function() {
       },
       series: [{
         name: 'Sales',
-        data: [152,109,93,113,126,161,188,143,102,113,116,124]
+        data: [109,93,113,126,161,188,143,102,113,116,124]
       }],
       xaxis: {
         type: 'datetime',
-        categories: ['01/01/2022','02/01/2022','03/01/2022','04/01/2022','05/01/2022','06/01/2022','07/01/2022', '08/01/2022','09/01/2022','10/01/2022', '11/01/2022', '12/01/2022'],
+        categories: ['01/01/2222','02/01/2022','03/01/2022','04/01/2022','05/01/2022','06/01/2022','07/01/2022', '08/01/2022','09/01/2022','10/01/2022', '11/01/2022', '12/01/2022'],
         axisBorder: {
           color: colors.gridBorder,
         },
@@ -540,7 +540,7 @@ $(function() {
       },
       yaxis: {
         title: {
-          text: 'Number of Sales',
+          text: 'Number Count',
           style:{
             size: 9,
             color: colors.muted
@@ -579,7 +579,7 @@ $(function() {
         },
       },
     }
-    
+
     var apexBarChart = new ApexCharts(document.querySelector("#monthlySalesChart"), options);
     apexBarChart.render();
   }
@@ -607,10 +607,10 @@ $(function() {
       tooltip: {
         theme: 'light'
       },
-      colors: [colors.primary],  
+      colors: [colors.primary],
       fill: {
         opacity: .9
-      } , 
+      } ,
       grid: {
         padding: {
           bottom: -4
@@ -639,7 +639,7 @@ $(function() {
       yaxis: {
         opposite: true,
         title: {
-          text: 'Number of Sales',
+          text: 'Number of Count',
           offsetX: -108,
           style:{
             size: 9,
@@ -683,7 +683,7 @@ $(function() {
         },
       },
     }
-    
+
     var apexBarChart = new ApexCharts(document.querySelector("#monthlySalesChartRTL"), options);
     apexBarChart.render();
   }
@@ -713,7 +713,7 @@ $(function() {
             background: colors.light,
             strokeWidth: '100%',
             opacity: 1,
-            margin: 5, 
+            margin: 5,
           },
           dataLabels: {
             showOn: "always",
@@ -739,9 +739,9 @@ $(function() {
       },
       labels: ["Storage Used"]
     };
-    
+
     var chart = new ApexCharts(document.querySelector("#storageChart"), options);
-    chart.render();    
+    chart.render();
   }
   // Cloud Storage Chart - END
 

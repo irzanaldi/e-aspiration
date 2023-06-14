@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Livewire\AdminPage;
 use App\Http\Livewire\LandingPage;
 use App\Http\Livewire\LocationPage;
@@ -26,9 +27,7 @@ Route::post('/login-post', [AuthController::class, 'loginPost'])->name('login.po
 Route::post('/logout-admin', [AuthController::class, 'logout'])->name('logout.admin');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/admin', AdminPage::class)->name('admin.index');
     Route::get('/user', UserPage::class)->name('user.index');

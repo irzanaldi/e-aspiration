@@ -44,13 +44,13 @@
     <script src="{{ asset('assets/js/spinner.js') }}"></script>
 
     {{-- <div class="p-1"> --}}
-        <header>
+        {{-- <header>
             @include('layout.navbar')
-        </header>
+        </header> --}}
 
-        <main>
+        {{-- <main> --}}
             @yield('content')
-        </main>
+        {{-- </main> --}}
         {{-- @include('layout.footer') --}}
     {{-- </div> --}}
 
